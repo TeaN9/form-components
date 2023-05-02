@@ -39,21 +39,15 @@ function LogInForm() {
     isLearning: false,
   };
 
-  const methods = useForm({ defaultValues });
+  const methods = useForm({
+    resolver: yupResolver(schema),
+    defaultValues,
+  });
 
   const {
-    setError,
-    // handleSubmit,
-    // formState: { errors, isSubmitting },
-  } = methods;
-
-  const {
-    register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  } = methods;
 
   const [showPassword, setShowPassword] = useState(false);
 
